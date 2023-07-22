@@ -1,3 +1,7 @@
+<img src="./src/public/img/desktop.png" alt="version desktop">
+
+
+
 # STEP 1 
 npm init -y
 
