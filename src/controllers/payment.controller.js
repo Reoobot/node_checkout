@@ -1,10 +1,11 @@
-import Stripe from 'stripe';
+import Stripe from "stripe";
 import {STRIPE_PRIVATE_KEY} from '../config.js'
+
 
 const stripe = new Stripe (STRIPE_PRIVATE_KEY);
 
 export const createSeccion = async (req, res)=> {
-    const session = await stripe.checkout.sessions.create({
+   const session = await stripe.checkout.sessions.create({
         line_items:[
             {
                 price_data:{
@@ -35,3 +36,5 @@ export const createSeccion = async (req, res)=> {
     })
     return res.json(session)
 };
+
+
