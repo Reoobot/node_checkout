@@ -10,7 +10,7 @@
 async function handleCheckout() {
     try {
       const response = await fetch('/checkout-session', {
-        method: 'POST'
+        method: 'GET'
       });
   
       if (!response.ok) {
@@ -20,7 +20,7 @@ async function handleCheckout() {
       const data = await response.json();
       console.log(data);
   
-      // window.location.href = data.url;
+      window.location.href = data.url;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
