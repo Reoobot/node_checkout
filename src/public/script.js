@@ -10,8 +10,20 @@
 async function handleCheckout() {
     try {
       const response = await fetch('/checkout-session', {
-        method: 'GET'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            amount: 1000,
+            currency: 'usd',
+            paymentMethodType: 'card',
+            paymentMethod: 'pm_card_visa',
+            confirm: true
+        })
       });
+
+
   
       if (!response.ok) {
         throw new Error('Network response was not ok');

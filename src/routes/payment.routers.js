@@ -3,7 +3,7 @@ import { createSeccion } from "../controllers/payment.controller.js";
 
 const router = Router();
 
-router.get("/checkout-session", createSeccion);
+router.post("/checkout-session", createSeccion);
 router.get('/success',(req, res)=> res.redirect("/success.html"));
 router.get('/cancel',(req, res)=> res.redirect("/"));
 
