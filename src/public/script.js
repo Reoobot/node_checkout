@@ -8,7 +8,7 @@
 // }
 
 async function handleCheckout() {
-    const res = await fetch('https://checkout-gilt.vercel.app/checkout-session', {
+    const res = await fetch('/checkout-session', {
       method: 'POST'
     });
   
