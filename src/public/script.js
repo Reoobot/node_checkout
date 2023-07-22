@@ -1,11 +1,24 @@
+// async function handleCheckout() {
+//     const res = await fetch('/checkout-session', {
+//         method: 'POST'
+//     });
+//     const data = await res.json();
+//     console.log(data);
+//     window.location.href = data.url;
+// }
+
 async function handleCheckout() {
     const res = await fetch('/checkout-session', {
-        method: 'POST'
+      method: 'POST'
     });
+  
     const data = await res.json();
     console.log(data);
+  
     window.location.href = data.url;
-}
+  }
+  
+  
 
 
 
