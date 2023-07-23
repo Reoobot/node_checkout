@@ -1,71 +1,57 @@
-
-// async function handleCheckout() {
-//   try {
-//     const response = await fetch('/checkout-session', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         // Puedes agregar aquí los datos que necesites enviar en la solicitud POST
-//       })
-//     });
-
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-
-//     const data = await response.json();
-
-//     // // Obtenemos el elemento donde queremos mostrar la respuesta
-//     // const responseElement = document.getElementById('responseMessage');
-
-//     // // Modificamos el contenido del elemento con la respuesta del servidor
-//     // responseElement.textContent = JSON.stringify(data);
-
-//     // Si la respuesta contiene la propiedad 'url', redirige al usuario a esa URL
-//     if (data.url) {
-//       window.location.href = data.url;
-//     }
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//   }
-// }
+// const button = document.getElementById('checkout')
+// button.addEventListener('click', async ()=>{
+//     const res =  await fetch('/checkout-session',{
+//         method: 'POST'
+//     })
+//     const data = await res.json()
+//     console.log(data);
+// })
 
 
 
 
+const button = document.getElementById('checkout');
 
+const handleCheckout = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await fetch('/checkout-session', {
+        method: 'POST'
+      });
 
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-// Código en el cliente (por ejemplo, en el archivo script.js)
-
-async function handleCheckout() {
-  try {
-    const response = await fetch('/checkout-session', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      // Puedes agregar aquí los datos que necesites enviar en el cuerpo de la solicitud
-      body: JSON.stringify({}),
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+      const data = await res.json();
+      resolve(data);
+    } catch (error) {
+      reject(error);
     }
+  });
+};
 
-    const data = await response.json();
+button.addEventListener('click', () => {
+  handleCheckout()
+    .then(data => {
+      console.log(data);
+      // Aquí puedes realizar acciones adicionales con la respuesta `data`
 
-    // Aquí puedes hacer lo que desees con la URL de la sesión de pago, por ejemplo, redireccionar al usuario a la página de pago de Stripe
-    window.location.href = data.url;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
+      // Redireccionar a la página de la promesa
+      window.location.href = data.url;
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      // Aquí puedes manejar los errores de la solicitud
+    });
+});
 
-// Llamada a la función handleCheckout cuando se hace clic en un botón (por ejemplo, el botón con el ID "checkoutButton")
-document.getElementById('checkoutButton').addEventListener('click', handleCheckout);
+
+
+
+
+
+
 
 
 
