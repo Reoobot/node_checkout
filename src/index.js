@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use(express.json())
 
-app.use('/checkout-session', paymentRoutes);
+app.use(paymentRoutes);
 
 app.use(express.static(path.resolve('src/public')))
 

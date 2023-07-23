@@ -9,17 +9,13 @@
 
 async function handleCheckout() {
     try {
-      const response = await fetch('https://pay-plum.vercel.app/checkout-session', {
+      const response = await fetch('/checkout-session', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            amount: 1000,
-            currency: 'usd',
-            paymentMethodType: 'card',
-            paymentMethod: 'pm_card_visa',
-            confirm: true
+           
         })
       });
 
