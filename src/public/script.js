@@ -7,36 +7,120 @@
 //     window.location.href = data.url;
 // }
 
-async function handleCheckout() {
-    try {
-      const response = await fetch('/checkout-session', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+// async function handleCheckout() {
+//     try {
+//       const response = await fetch('/checkout-session', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
            
-        })
-      });
+//         })
+//       });
 
 
   
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+//       if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//       }
   
-      const data = await response.json();
-      console.log(data);
+//       const data = await response.json();
+//       console.log(data);
   
-      window.location.href = data.url;
-    } catch (error) {
-      console.error('Error fetching data:', error);
+//       window.location.href = data.url;
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//     }
+//   }
+  
+  
+
+
+
+
+
+// async function handleCheckout() {
+//   try {
+//     const response = await fetch('/checkout-session', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         // Puedes agregar aquí los datos que necesites enviar en la solicitud POST
+//       })
+//     });
+
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+
+//     const data = await response.json();
+
+//     // Obtenemos el elemento donde queremos mostrar la respuesta
+//     const responseElement = document.getElementById('responseMessage');
+
+//     // Modificamos el contenido del elemento con la respuesta del servidor
+//     responseElement.textContent = JSON.stringify(data);
+
+//     // Si la respuesta contiene la propiedad 'url', redirige al usuario a esa URL
+//     // if (data.url) {
+//     //   window.location.href = data.url;
+//     // }
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// }
+
+
+
+
+
+
+
+
+async function handleCheckout() {
+  try {
+    const response = await fetch('/checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        // Puedes agregar aquí los datos que necesites enviar en la solicitud POST
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+
+    const data = await response.json();
+
+    // Obtenemos el elemento donde queremos mostrar la respuesta
+    const responseElement = document.getElementById('responseMessage');
+
+    // Creamos un enlace (<a>) con la URL de la respuesta como destino
+    const link = document.createElement('a');
+    link.href = data.url;
+    link.textContent = 'Haz clic aquí para pagar';
+
+    // Añadimos el enlace al elemento donde se mostrará la respuesta
+    responseElement.appendChild(link);
+  } catch (error) {
+    console.error('Error fetching data:', error);
   }
-  
-  
+}
 
 
+
+
+
+
+
+
+  
 
 function toggleMenu() {
     const menu = document.getElementById('menu');
