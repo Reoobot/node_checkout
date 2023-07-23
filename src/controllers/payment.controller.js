@@ -36,7 +36,7 @@ export const createSeccion = async (req, res)=> {
           success_url: 'http://localhost:3000/success',
           cancel_url: 'http://localhost:3000/cancel',
         });
-        // console.log(session);
+        
         return res.json({ url: session.url });
       } catch (error) {
         console.error('Error creating checkout session:', error.message);

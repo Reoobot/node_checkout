@@ -1,15 +1,3 @@
-// const button = document.getElementById('checkout')
-// button.addEventListener('click', async ()=>{
-//     const res =  await fetch('/checkout-session',{
-//         method: 'POST'
-//     })
-//     const data = await res.json()
-//     console.log(data);
-// })
-
-
-
-
 const button = document.getElementById('checkout');
 
 const handleCheckout = () => {
@@ -35,20 +23,15 @@ button.addEventListener('click', () => {
   handleCheckout()
     .then(data => {
       console.log(data);
-      // Aquí puedes realizar acciones adicionales con la respuesta `data`
-
-      // Redireccionar a la página de la promesa
-      window.location.href = data.url;
+       window.location.href = data.url;
     })
     .catch(error => {
       console.error('Error fetching data:', error);
-      // Aquí puedes manejar los errores de la solicitud
+       setTimeout(() => {
+        window.location.href = '/success.html';
+      }, 5000); 
     });
 });
-
-
-
-
 
 
 
