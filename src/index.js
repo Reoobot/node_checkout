@@ -1,6 +1,6 @@
 import express from 'express'
 import paymentRoutes from './routes/payment.routers.js'
-import {PORT} from './config.js'
+import {port} from './config.js'
 import path from 'path'
 
 const app = express()
@@ -17,5 +17,5 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(PORT)
-console.log('server on port', PORT)
+app.listen(port)
+console.log('server on port', port)
