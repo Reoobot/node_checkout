@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import {STRIPE_PRIVATE_KEY} from '../config.js'
 
 
-const stripe = new Stripe (STRIPE_PRIVATE_KEY);
+const stripe = new Stripe ("sk_test_51NWM8lH8MtGcUEHp2EkLYrn1jkbDRk1TTkZfpGbqf88wkAJvIns14HKhQ34udBW6aRGiJNbKmQBjJIuEaqYCUNqY003JwX5qOg");
 
 
 export const createSeccion = async (req, res)=> {
